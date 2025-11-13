@@ -1,0 +1,317 @@
+/* Clean Card Login Styles - Updated to Glassy Light Pastel Theme */
+
+/* CSS Variables for Easy Theming */
+:root {
+    /* Updated to light, soft colors to match the light gift wrappers */
+    --primary-color: #A5C9CA; /* Soft Aqua/Mint - for buttons, links, focus */
+    --secondary-color: #88B0AF; /* Slightly darker shade for hover */
+    --gold-accent: #E0B460; /* Soft Gold/Cream for secondary contrast */
+
+    --background-color: #f7f7f7;
+    --card-background: #ffffff;
+    --text-color: #333333;
+    --input-border: #e5e7eb;
+    --focus-border: var(--primary-color);
+    --error-color: #ef4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+
+    /* NOTE: Background image should be defined in HTML <style> block using {% static %} for Django */
+
+    background-color: var(--background-color);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.login-card-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-card {
+    /* --- Glassy Effect (Maintained) --- */
+    background: rgba(255, 255, 255, 0.4); /* Very transparent white */
+    backdrop-filter: blur(10px); /* The key Glassmorphism effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari compatibility */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Light border for definition */
+
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.login-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-header h2 {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.login-header p {
+    color: #5a5a5a; /* Slightly darker text for readability on translucent card */
+    font-size: 0.95rem;
+}
+
+/* --- Input Styles --- */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 14px 16px;
+    /* Ensure input background is solid white for readability */
+    background: var(--card-background);
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    font-size: 16px;
+    color: var(--text-color);
+    transition: all 0.3s;
+    outline: none;
+}
+
+.input-wrapper input:focus {
+    /* Focus border now uses the primary light pastel color */
+    border-color: var(--focus-border);
+    box-shadow: 0 0 0 3px rgba(165, 201, 202, 0.3); /* Soft accent shadow */
+}
+
+/* Password Toggle */
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #9a9a9a;
+    transition: color 0.2s;
+}
+
+.password-toggle:hover {
+    color: var(--primary-color);
+}
+
+/* Error States */
+.form-group.error .input-wrapper input {
+    border-color: var(--error-color);
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: none;
+}
+
+/* --- Options and Links --- */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 0.85rem;
+}
+
+.remember-wrapper label {
+    color: var(--text-color);
+    user-select: none;
+    cursor: pointer;
+}
+
+.remember-wrapper input[type="checkbox"] {
+    margin-right: 5px;
+    accent-color: var(--primary-color);
+}
+
+.forgot-password {
+    /* Link color changed to primary light pastel */
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.forgot-password:hover {
+    /* Link hover uses soft gold/cream accent */
+    color: var(--gold-accent);
+}
+
+/* --- Button Styles (Primary Color) --- */
+.login-btn {
+    width: 100%;
+    /* Button color changed to primary light pastel */
+    background: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    padding: 14px 24px;
+    color: white; /* Keep text white for contrast */
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    /* Button shadow uses the primary color */
+    box-shadow: 0 4px 15px rgba(165, 201, 202, 0.4);
+    margin-bottom: 20px;
+}
+
+.login-btn:hover {
+    /* Hover color changed to secondary light pastel */
+    background: var(--secondary-color);
+    box-shadow: 0 6px 20px rgba(136, 176, 175, 0.5);
+}
+
+/* Loading State */
+.btn-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: spin 1s linear infinite;
+    transition: opacity 0.3s;
+}
+
+.login-btn.loading .btn-text {
+    opacity: 0;
+}
+
+.login-btn.loading .btn-loader {
+    opacity: 1;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* --- Social Login --- */
+.social-divider {
+    text-align: center;
+    margin: 20px 0;
+    color: #9ca3af;
+    font-size: 0.85rem;
+    position: relative;
+}
+
+.social-divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #e5e7eb;
+    z-index: 1;
+}
+
+.social-divider span {
+    /* Make the span background match the translucent card */
+    background: rgba(255, 255, 255, 0.6);
+    padding: 0 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.social-login {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.social-btn {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--input-border);
+    background: var(--card-background);
+    color: var(--text-color);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.social-btn:hover {
+    /* Social hover border uses primary color */
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.social-btn i {
+    margin-right: 8px;
+}
+
+/* --- Signup Link --- */
+.signup-link {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.signup-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 480px) {
+    /* Reduce padding on the card for smaller screens */
+    .login-card {
+        padding: 30px 20px;
+    }
+
+    /* Stack social login buttons vertically on mobile */
+    .social-login {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* Make social buttons take full width when stacked */
+    .social-btn {
+        width: 100%;
+    }
+
+    /* Tidy up header text on small screens */
+    .login-header h2 {
+        font-size: 1.6rem;
+    }
+}

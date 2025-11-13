@@ -1,0 +1,105 @@
+/* =======================================================
+   HERO BANNER STYLES
+   ======================================================= */
+
+/* =======================================================
+   HERO BANNER STYLES
+   ======================================================= */
+
+.hero-banner-celebration {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    /* !!! REMOVE THIS LINE IF USING INLINE HTML STYLE !!! */
+    /* background-image: url(static 'web/images/herobannerimg.png'); */
+    /* **************************************************** */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+/* ... (Rest of the Hero Banner CSS remains the same) ... */
+/* Optional: Add a subtle overlay for better text readability on busy images */
+.hero-banner-celebration::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Dark overlay for text readability */
+    z-index: 1;
+}
+
+.hero-banner-celebration .container-fluid {
+    z-index: 2;
+}
+
+.hero-banner-celebration .hero-content-wrapper {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-banner-celebration h1 {
+    font-size: 3.8rem;
+    color: #FFFBEA; /* Champagne Gold for the headline */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    line-height: 1.2;
+}
+
+.hero-banner-celebration p.lead {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-banner-celebration .btn-dark {
+    /* Vibrant Coral */
+    min-width: 200px;
+    font-size: 1.2rem;
+    padding: 12px 30px;
+}
+
+.hero-banner-celebration .btn-outline-light {
+    /* Gold Accent */
+    min-width: 180px;
+    font-size: 1.1rem;
+    padding: 12px 25px;
+    color: #FFFBEA !important;
+    border-color: #FFFBEA !important;
+}
+
+.hero-banner-celebration .btn-outline-light:hover {
+    background-color: #FFC43F !important;
+    color: #ffffff !important;
+    border-color: #FFC43F !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-banner-celebration h1 {
+        font-size: 2.8rem;
+    }
+    .hero-banner-celebration p.lead {
+        font-size: 1.1rem;
+    }
+    .hero-banner-celebration .d-flex {
+        flex-direction: column;
+    }
+    .hero-banner-celebration .btn-dark,
+    .hero-banner-celebration .btn-outline-light {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

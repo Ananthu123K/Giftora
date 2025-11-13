@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <section class="py-5 overflow-hidden">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="section-header d-flex flex-wrap justify-content-between mb-5">
+              <h2 class="section-title">Category</h2>
+
+              <div class="d-flex align-items-center">
+                <a href="#" class="btn-link text-decoration-none">View All Categories →</a>
+                <div class="swiper-buttons">
+                  <button class="swiper-prev category-carousel-prev btn btn-yellow">❮</button>
+                  <button class="swiper-next category-carousel-next btn btn-yellow">❯</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="category-carousel swiper">
+              <div class="swiper-wrapper">
+                <a href="index.html" class="nav-link category-item swiper-slide">
+                  <img src="images/icon-vegetables-broccoli.png" alt="Category Thumbnail">
+                  <h3 class="category-title">Fruits & Veges</h3>
+                </a>
+                <a href="index.html" class="nav-link category-item swiper-slide">
+                  <img src="images/icon-bread-baguette.png" alt="Category Thumbnail">
+                  <h3 class="category-title">Breads & Sweets</h3>
+                </a>
+                <a href="index.html" class="nav-link category-item swiper-slide">
+                  <img src="images/icon-soft-drinks-bottle.png" alt="Category Thumbnail">
+                  <h3 class="category-title">Fruits & Veges</h3>
+                </a>
+                <a href="index.html" class="nav-link category-item swiper-slide">
+                  <img src="images/icon-wine-glass-bottle.png" alt="Category Thumbnail">
+                  <h3 class="category-title">Fruits & Veges</h3>
+                </a>
+                <a href="index.html" class="nav-link category-item swiper-slide">
+                  <img src="images/icon-animal-products-drumsticks.png" alt="Category Thumbnail">
+                  <h3 class="category-title">Fruits & Veges</h3>
+                </a>
+                <a href="index.html" class="nav-link category-item swiper-slide">
+                  <img src="images/icon-bread-herb-flour.png" alt="Category Thumbnail">
+                  <h3 class="category-title">Fruits & Veges</h3>
+                </a>
+                <a href="index.html" class="nav-link category-item swiper-slide">
+                  <img src="images/icon-vegetables-broccoli.png" alt="Category Thumbnail">
+                  <h3 class="category-title">Fruits & Veges</h3>
+                </a>
+                <a href="index.html" class="nav-link category-item swiper-slide">
+                  <img src="images/icon-vegetables-broccoli.png" alt="Category Thumbnail">
+                  <h3 class="category-title">Fruits & Veges</h3>
+                </a>
+                <a href="index.html" class="nav-link category-item swiper-slide">
+                  <img src="images/icon-vegetables-broccoli.png" alt="Category Thumbnail">
+                  <h3 class="category-title">Fruits & Veges</h3>
+                </a>
+                <a href="index.html" class="nav-link category-item swiper-slide">
+                  <img src="images/icon-vegetables-broccoli.png" alt="Category Thumbnail">
+                  <h3 class="category-title">Fruits & Veges</h3>
+                </a>
+                <a href="index.html" class="nav-link category-item swiper-slide">
+                  <img src="images/icon-vegetables-broccoli.png" alt="Category Thumbnail">
+                  <h3 class="category-title">Fruits & Veges</h3>
+                </a>
+                <a href="index.html" class="nav-link category-item swiper-slide">
+                  <img src="images/icon-vegetables-broccoli.png" alt="Category Thumbnail">
+                  <h3 class="category-title">Fruits & Veges</h3>
+                </a>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+ <section class="py-5 overflow-hidden">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="section-header d-flex justify-content-between">
+
+              <h2 class="section-title"> popular products</h2>
+
+              <div class="d-flex align-items-center">
+                <a href="#" class="btn-link text-decoration-none">View All Categories →</a>
+                <div class="swiper-buttons">
+                  <button class="swiper-prev products-carousel-prev btn btn-primary">❮</button>
+                  <button class="swiper-next products-carousel-next btn btn-primary">❯</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="products-carousel swiper">
+              <div class="swiper-wrapper">
+              {% for i in gifts %}
+                    <div class="product-item swiper-slide">
+                      <a href="#" class="btn-wishlist"><svg width="24" height="24"><use xlink:href="#heart"></use></svg></a>
+                      <figure>
+                        <a href="index.html" title="Product Title">
+                          <img src="{{ i.Gift_image.url }}"  class="tab-image">
+                        </a>
+                      </figure>
+                      <h3>{{ i.Gift_name }}</h3>
+<!--                      <span class="qty">1 Unit</span>-->
+                      <span class="rating"><svg width="24" height="24" class="text-primary"><use xlink:href="#star-solid"></use></svg> 4.5</span>
+                      <span class="price">RS.{{ i.Price }}</span>
+                      <div class="d-flex align-items-center justify-content-between">
+                        <div class="input-group product-qty">
+                        </div>
+
+                         <a href="{% url 'single_gift' i.id %}"
+                            class="btn btn-primary btn-sm px-3 py-1 rounded-pill shadow-sm">
+                            View Product
+                            <iconify-icon icon="uil:shopping-cart" width="12" height="12"></iconify-icon>
+                        </a>
+
+                      </div>
+                    </div>
+                  {% endfor %}
+
+             </span>
+<!--                        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1">-->
+<!--                        <span class="input-group-btn">-->
+<!--                            <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus">-->
+<!--                                <svg width="16" height="16"><use xlink:href="#plus"></use></svg>-->
+<!--                            </button>-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                    <a href="#" class="nav-link">Add to Cart <iconify-icon icon="uil:shopping-cart"></a>-->
+<!--                  </div>-->
+<!--                </div>-->
+
+              </div>
+            </div>
+            <!-- / products-carousel -->
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+</body>
+</html>

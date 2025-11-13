@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Category</title>
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .category-form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+        }
+
+        .category-form {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 600px;
+            padding: 40px 35px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .category-form:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            transform: translateY(-3px);
+        }
+
+        .category-form h3 {
+            text-align: center;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #334155;
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+            padding: 12px 15px;
+            width: 100%;
+            font-size: 15px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 6px rgba(37, 99, 235, 0.3);
+            outline: none;
+        }
+
+        textarea.form-control {
+            resize: none;
+        }
+
+        .btn-primary {
+            background-color: #2563eb;
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-weight: 500;
+            font-size: 16px;
+            color: #fff;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #1e40af;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .category-form {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="category-form-container">
+    <div class="category-form">
+        <h3>➕ Add New Category</h3>
+        <form method="post" action="{% url 'save_category' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label">Category Name</label>
+                <input type="text" class="form-control" name="Category_name" placeholder="Enter category name" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea class="form-control" name="Description" rows="3" placeholder="Enter description" required></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Category Image</label>
+                <input type="file" class="form-control" name="Cover_Image" required>
+            </div>
+
+            <button type="submit" class="btn-primary">Add Category</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
+{% endblock %}

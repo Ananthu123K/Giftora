@@ -1,0 +1,48 @@
+/* Bootstrap navbar scroll behavior */
+.main-menu.navbar {
+    position: relative; /* Start as relative */
+    width: 100%;
+    z-index: 1030;
+    padding: 0.5rem 1rem;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* When scrolled past header, make it fixed */
+.main-menu.navbar.is-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Add .navbar-scrolled class when scrolled down */
+.main-menu.navbar.navbar-scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure dropdown menus remain visible */
+.main-menu.navbar .dropdown-menu {
+    margin-top: 0;
+}
+
+/* Preserve offcanvas behavior */
+.main-menu.navbar .offcanvas {
+    z-index: 1040;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .main-menu.navbar {
+        padding: 0.25rem 0.75rem;
+    }
+    .main-menu.navbar .navbar-toggler {
+        margin-right: 0.5rem;
+    }
+}
+
+
+

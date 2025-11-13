@@ -1,0 +1,59 @@
+/* Sidebar background */
+
+      /* Sidebar links */
+/* Sidebar links */
+.sidebar-body-menu li a {
+    display: block;
+    color: #ffffff;        /* Bright white text for blue background */
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+
+/* Hover effect */
+.sidebar-body-menu li a:hover {
+    background-color: #007bff;     /* Blue background on hover */
+    color: #fff;                   /* White text on hover */
+}
+
+/* Active link styling */
+.sidebar-body-menu li a.active {
+    background-color: #007bff;     /* Blue active state */
+    color: #fff;
+}
+
+/* Optional: Submenu styling */
+.cat-sub-menu li a {
+    padding-left: 30px;
+    font-size: 0.9rem;
+    color: #222;                   /* Slightly brighter for visibility */
+}
+
+.cat-sub-menu li a:hover {
+    background-color: #e9f3ff;     /* Light blue hover for submenus */
+    color: #007bff;
+}
+        /* Sidebar background */
+.sidebar {
+    background-color: #0b3d91;   /* Darker blue for better contrast */
+    color: #ffffff;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+}
+        /* --- Custom Sidebar Override (Darker Blue Version) --- */
+.sidebar {
+  background-color: #142d6b !important;  /* darker blue tone */
+}
+
+.sidebar-body-menu li a {
+  color: #ffffff !important;
+  font-weight: 500;
+}
+
+.sidebar-body-menu li a:hover,
+.sidebar-body-menu li a.active {
+  background-color: #1e40af !important;  /* medium blue on hover */
+  color: #ffffff !important;
+}

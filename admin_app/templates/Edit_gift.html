@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Gift</title>
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .gift-form-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 80px 20px 100px;
+            margin-top: 50px;
+        }
+
+        .gift-form {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 650px;
+            padding: 40px 35px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .gift-form:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            transform: translateY(-3px);
+        }
+
+        .gift-form h3 {
+            text-align: center;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #334155;
+            margin-bottom: 6px;
+        }
+
+        .form-control, .form-select {
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+            padding: 12px 15px;
+            width: 100%;
+            font-size: 15px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 6px rgba(37, 99, 235, 0.3);
+            outline: none;
+        }
+
+        textarea.form-control {
+            resize: none;
+        }
+
+        .current-img {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .current-img img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+        }
+
+        .btn-primary {
+            background-color: #2563eb;
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-weight: 500;
+            font-size: 16px;
+            color: #fff;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #1e40af;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .gift-form {
+                padding: 25px 20px;
+            }
+            .gift-form-container {
+                padding: 60px 15px 80px;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="gift-form-container">
+    <div class="gift-form">
+        <h3>🎁 Edit Gift</h3>
+
+        <form method="POST" action="{% url 'update_gift' gifts.id %}"    enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label">Gift Name</label>
+                <input type="text" name="gift_name" class="form-control"
+                       value="{{ gifts.Gift_name }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Category</label>
+                <select name="category" class="form-select" required>
+                    <option selected>{{ gifts.Category }}</option>
+                    {% for i in categories %}
+                    <option>{{ i.Category_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Price (₹)</label>
+                <input type="number" name="price" class="form-control"
+                       value="{{ gifts.Price }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Stock Quantity</label>
+                <input type="number" name="stock" class="form-control"
+                       value="{{ gifts.Stock }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Brand</label>
+                <input type="text" name="brand" class="form-control"
+                       value="{{ gifts.Brand }}">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea name="description" class="form-control" rows="3">{{ gifts.Description }}</textarea>
+            </div>
+
+            <div class="current-img">
+                {% if gifts.Gift_image %}
+                    <p>Current Image:</p>
+                    <img src="{{ gifts.Gift_image.url }}" alt="{{ gifts.Gift_name }}">
+                {% else %}
+                    <p class="text-muted">No image uploaded</p>
+                {% endif %}
+            </div>
+
+            <div class="mb-4">
+                <input type="file" name="gift_image" class="form-control" accept="image/*">
+            </div>
+
+            <button type="submit" class="btn-primary">Update Gift</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
+{% endblock %}

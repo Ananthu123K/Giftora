@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Category</title>
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .edit-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            padding: 30px 40px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #1e3a8a;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        label {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 4px rgba(37,99,235,0.3);
+            outline: none;
+        }
+
+        img {
+            display: block;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1e40af;
+        }
+    </style>
+</head>
+<body>
+
+<div class="edit-container">
+    <h3>✏️ Edit Category</h3>
+
+    <form method="post" action="{% url 'update_category' category.id %}" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <label>Category Name</label>
+    <input type="text" name="category_name" class="form-control" value="{{ category.Category_name }}" required>
+
+    <label>Description</label>
+    <textarea name="description" class="form-control" rows="3" required>{{ category.Description }}</textarea>
+
+    <label>Current Image</label>
+    <img src="{{ category.Cover_Image.url }}" alt="Current Category Image">
+
+    <label>Change Image</label>
+    <input type="file" name="Cover_Image" class="form-control">
+
+    <button type="submit" class="btn btn-primary mt-3">Update Category</button>
+</form>
+
+</div>
+
+</body>
+</html>
+{% endblock %}

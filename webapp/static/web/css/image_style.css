@@ -1,0 +1,189 @@
+/* Product Carousel and Card Styles */
+
+/* Swiper carousel container */
+.products-carousel {
+    padding: 20px 0;
+}
+
+/* Product card styles */
+.product-item {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%; /* Ensure all cards are same height */
+    display: flex;
+    flex-direction: column;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Product figure/image container */
+.product-item figure {
+    margin: 0 0 15px 0;
+    padding: 0;
+    aspect-ratio: 1; /* Force square aspect ratio */
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: #f8f8f8;
+}
+
+/* Product image styles */
+.product-item figure img.tab-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Show full product without cropping */
+    display: block;
+    background: #fff;
+    padding: 10px;
+}
+
+/* Product title */
+.product-item h3 {
+    font-size: 1rem;
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+    height: 2.4em; /* Limit to 2 lines */
+    overflow: hidden;
+}
+
+/* Price and rating container */
+.product-item .price,
+.product-item .rating {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 5px 0;
+    display: inline-block;
+}
+
+/* Quantity input group */
+.product-item .product-qty {
+    max-width: 120px;
+    margin-right: 10px;
+}
+
+.product-item .product-qty input {
+    text-align: center;
+    height: 36px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .product-item figure {
+        height: 200px; /* Smaller height on mobile */
+    }
+
+    .product-item h3 {
+        font-size: 0.9rem;
+    }
+}
+
+/* Thumbnail style */
+img.thumb-image {
+    width: 150px;     /* Fixed width */
+    height: 150px;    /* Fixed height - makes it square */
+    object-fit: cover; /* Crop to fill */
+}
+
+/* Banner image style */
+img.banner-image {
+    width: 100%;      /* Full width */
+    height: 400px;    /* Fixed height */
+    object-fit: cover; /* Crop to fill */
+}
+
+/* Blog post image style */
+img.blog-image {
+    max-width: 100%;  /* Full width up to original size */
+    height: auto;     /* Maintain aspect ratio */
+    margin: 20px 0;   /* Add some spacing */
+}
+
+/* Gallery image style */
+img.gallery-image {
+    width: 100%;      /* Full width */
+    height: 200px;    /* Fixed height */
+    object-fit: cover; /* Crop to fill */
+    margin-bottom: 15px;
+}
+
+/* Optional: Add hover effect */
+img.gallery-image:hover {
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+/* Square aspect ratio (1:1) for profile pictures or thumbnails */
+.img-container.square {
+    padding-bottom: 100%;
+}
+
+/* 4:3 aspect ratio for traditional photos */
+.img-container.ratio-4-3 {
+    padding-bottom: 75%;
+}
+
+/* 3:2 aspect ratio for landscape photos */
+.img-container.ratio-3-2 {
+    padding-bottom: 66.67%;
+}
+
+/* Product image specific styles */
+.product-img-container {
+    padding-bottom: 100%; /* Square by default for product images */
+}
+
+.product-img-container img {
+    object-fit: contain; /* Shows full image without cropping */
+    background-color: #fff; /* Optional: white background */
+    padding: 0.5rem;
+}
+
+/* Blog/article featured image styles */
+.featured-img-container {
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+/* Thumbnail grid styles */
+.thumb-container {
+    padding-bottom: 100%;
+}
+
+.thumb-container img {
+    transition: transform 0.3s ease;
+}
+
+.thumb-container:hover img {
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    /* Adjust padding for smaller screens if needed */
+    .featured-img-container {
+        padding-bottom: 75%; /* 4:3 on mobile */
+    }
+}
+
+/* Optional: Loading placeholder */
+.img-container.loading::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.6; }
+}

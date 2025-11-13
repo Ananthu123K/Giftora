@@ -1,0 +1,426 @@
+/* =======================================================
+   ANIMATION KEYFRAMES
+   ======================================================= */
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* =======================================================
+   SECTION A: HEADER AND NAVIGATION STYLES
+   ======================================================= */
+
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Top Header Bar (Section Above Navbar) - Clean White Background */
+header .row.py-3.border-bottom {
+    background-color: #ffffff !important;
+    border-color: #f0f0f0 !important;
+    align-items: center;
+}
+
+/* Header state on scroll */
+header.scrolled {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+header .main-logo img {
+    max-height: 40px;
+    width: auto;
+}
+
+/* Search Bar Enhancement */
+header .search-bar {
+    background-color: #f8f9fa !important;
+    padding: 8px 15px !important;
+    border-radius: 50px !important;
+    border: 1px solid #e9ecef;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin: 0;
+}
+
+/* User & Cart Auth Strips - Enhanced Engagement and Alignment */
+header .col-sm-8.col-lg-4 {
+    gap: 1.5rem !important;
+    align-items: center;
+}
+
+/* User Login/Account Button Styling (Eye-Catching Gold) */
+header .login-action-link {
+    display: flex;
+    align-items: center;
+    color: #495057;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+header .user-auth-icon {
+    /* Champagne Gold background for focus */
+    background-color: #FFFBEA !important;
+    color: #FFC43F; /* Gold icon color */
+    padding: 8px;
+    border-radius: 50%;
+    margin-right: 5px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+header .login-action-link:hover {
+    color: #166060; /* Deep Emerald hover text */
+}
+
+/* Eye-Catching: Icon background darkens on hover */
+header .login-action-link:hover .user-auth-icon {
+    background-color: #FFC43F !important;
+    color: #ffffff; /* White icon on hover */
+}
+
+/* Cart Icon and Total (High Visibility) */
+header .cart-strip {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+header .cart-total {
+    /* Use Vibrant Coral for high focus on money/total */
+    color: #E07A5F !important;
+    font-size: 1.25rem !important;
+    font-weight: 700;
+    transition: color 0.2s;
+    margin-left: 5px;
+}
+header .cart-total:hover {
+    color: #166060 !important; /* Deep Emerald hover color */
+}
+
+/* LOGOUT BUTTON STYLING (Standardized Gold Outline) */
+header .logged-in-strip .btn-logout-action {
+    display: inline-block;
+    color: #333333 !important;
+    background-color: transparent !important;
+    border: 2px solid #FFC43F !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem;
+    padding: 6px 15px !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none !important;
+    margin-left: 1rem !important;
+}
+
+header .logged-in-strip .btn-logout-action:hover {
+    background-color: #FFC43F !important;
+    color: #ffffff !important;
+    border-color: #FFC43F !important;
+    box-shadow: 0 4px 10px rgba(255, 196, 63, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Main Navigation Menu - Deep Emerald Hovers */
+header .menu-list .nav-link {
+    color: #495057;
+    transition: color 0.2s, border-bottom 0.2s;
+    padding-bottom: 5px;
+}
+
+header .menu-list .nav-link:hover,
+header .menu-list .nav-link.active {
+    color: #166060; /* Deep Emerald Green */
+    border-bottom: 2px solid #166060;
+}
+
+/* Dropdown Menu Visibility Fixes */
+header .search-bar .dropdown-menu,
+header .main-menu .dropdown-menu {
+    background-color: #ffffff !important;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 1050 !important;
+}
+header .dropdown-menu .dropdown-item:hover,
+header .dropdown-menu .dropdown-item.active {
+    background-color: #f7f7f7;
+    color: #166060 !important; /* Deep Emerald in dropdown hover */
+}
+
+
+/* =======================================================
+   SECTION B: HERO BANNER STYLES
+   ======================================================= */
+
+.hero-banner-celebration {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.hero-banner-celebration::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Dark overlay for text readability */
+    z-index: 1;
+}
+
+.hero-banner-celebration h1 {
+    font-size: 3.8rem;
+    color: #FFFBEA; /* Champagne Gold for the headline */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    line-height: 1.2;
+}
+
+/* Hero Button Primary CTA (Shop Top Picks) - Gold Outline Match */
+.hero-banner-celebration .btn-dark {
+    background-color: transparent !important;
+    border: 2px solid #FFFBEA !important;
+    color: #FFFBEA !important;
+    font-weight: 700 !important;
+    min-width: 200px;
+    font-size: 1.2rem;
+    padding: 12px 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease-in-out;
+}
+
+.hero-banner-celebration .btn-dark:hover {
+    background-color: #FFC43F !important;
+    border-color: #FFC43F !important;
+    color: #333333 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 196, 63, 0.6);
+}
+
+/* Hero Button Secondary CTAs (Gifts for Her/Him) - Gold Outline Match */
+.hero-banner-celebration .btn-outline-light {
+    min-width: 180px;
+    font-size: 1.1rem;
+    padding: 12px 25px;
+    color: #FFFBEA !important;
+    border-color: #FFFBEA !important;
+}
+
+.hero-banner-celebration .btn-outline-light:hover {
+    background-color: #FFC43F !important;
+    color: #ffffff !important;
+    border-color: #FFC43F !important;
+}
+
+
+
+
+/* =======================================================
+   SECTION C: GLOBAL BUTTONS AND BANNER BLOCKS (Non-Hero)
+   ======================================================= */
+
+/* --- STANDARD PRIMARY BUTTONS (Vibrant Coral) --- */
+/* These styles apply to other pages where the .btn-dark class is used */
+.btn-dark {
+    background: linear-gradient(to top, #e07a5f 0%, #f38f72 100%) !important;
+    border: none !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    padding: 10px 25px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 10px rgba(224, 122, 95, 0.4);
+    transition: all 0.2s ease-in-out;
+}
+.btn-dark:hover {
+    background: linear-gradient(to bottom, #d67056 0%, #e07a5f 100%) !important;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(224, 122, 95, 0.6);
+}
+
+/* --- STANDARD OUTLINE BUTTONS (Gold Accent) --- */
+/* These styles apply to other pages where the .btn-outline-light class is used */
+.btn-outline-light {
+    border: 2px solid #FFC43F !important;
+    color: #333333 !important;
+    background-color: transparent !important;
+    font-weight: 600 !important;
+    padding: 10px 20px !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-outline-light:hover {
+    background-color: #FFC43F !important;
+    color: #ffffff !important;
+    border-color: #FFC43F !important;
+    box-shadow: 0 4px 10px rgba(255, 196, 63, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Global banner wrapper styling and simplified hover effect */
+.banner-blocks .banner-ad {
+    border-radius: 12px !important;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.banner-blocks .banner-ad:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* --- UPDATED BANNER BLOCK COLORS (OPTION 2: WARM CORAL) --- */
+/* BLOCK 1: Muted Coral Tint */
+.banner-blocks .block-1 {
+    background: #F8EDED !important;
+}
+/* BLOCK 2: Light Gold / Champagne */
+.banner-blocks .block-2 {
+    background-color: #FFF5E0 !important;
+}
+/* BLOCK 3: Warm Beige / Stone */
+.banner-blocks .block-3 {
+    background-color: #F2F0E9 !important;
+}
+
+/* =======================================================
+   SECTION D: FOOTER STYLES
+   ======================================================= */
+footer.py-5 {
+    background-color: #ffffff !important;
+    border-top: 1px solid #e0e0e0 !important;
+}
+
+/* Footer Hovers (Using Deep Emerald for text) */
+footer.py-5 .menu-list .nav-link:hover,
+footer.py-5 a:not(.btn):hover {
+    color: #166060 !important; /* Deep Emerald hover */
+}
+
+/* Footer link/text colors */
+footer.py-5 .widget-title, footer.py-5 h1, footer.py-5 h2, footer.py-5 h3 { color: #222222 !important; }
+footer.py-5 .menu-list .nav-link, footer.py-5 p, footer.py-5 a:not(.btn) { color: #555555 !important; }
+
+/* Footer Button Hover */
+footer.py-5 .btn-outline-light:hover {
+    background-color: #FFC43F !important;
+    border-color: #FFC43F !important;
+    color: #ffffff !important;
+}
+
+
+
+
+
+
+/*product carousal
+
+/* Custom CSS for Product Card Visuals and Hover Effect */
+.product-item {
+    /* Ensure clean box modeling */
+    box-sizing: border-box;
+    /* Smooth transition for the hover effect */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    /* Optional: Ensure all items have the same height if content differs */
+    /* height: 100%; */
+}
+
+/* The magic for user engagement: Lift the card on hover */
+.product-item:hover {
+    /* Lifts the card slightly up */
+    transform: translateY(-5px);
+    /* Adds a soft, noticeable shadow */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Optional: Max height for images to ensure card uniformity */
+.product-item figure img {
+    max-height: 180px;
+    object-fit: contain; /* Ensures the entire image is visible within the bounds */
+    width: 100%;
+}
+
+/* Style for the button inside the product item to center it */
+.product-item .d-flex {
+    align-items: center;
+}
+
+
+/* Custom CSS for Single Product Layout and Styling */
+
+/* 1. Equal Height CSS */
+/* Apply h-100 (height: 100%) to the image and form wrappers
+   to ensure they stretch to the height of their parent column.
+   The parent row (.row.gy-4) should implicitly handle alignment. */
+
+#product-detail .col-md-6 {
+    /* Ensure the column allows its content to stretch */
+    display: flex;
+    flex-direction: column;
+}
+
+#product-detail .products-thumb,
+#product-detail .product-entry {
+    /* Make the content take up 100% of the column height */
+    height: 100%;
+    /* Ensure the image container has enough padding/margin to sit nicely */
+    box-sizing: border-box;
+}
+
+/* Ensure the image inside the figure fills its container */
+#product-detail .products-thumb img {
+    /* Object-fit ensures the image covers the area without distortion,
+       but you might prefer 'contain' depending on your image aspect ratio */
+    object-fit: cover;
+    height: 100%;
+}
+
+
+/* 2. Style for "Login to shop" Message */
+/* Target the span inside the product-entry section */
+/* Update the colors within the .login-message styling for a small, stylish look */
+#product-detail .product-entry .login-message {
+    display: inline-block; /* Changed to inline-block to shrink wrap the text */
+    margin-top: 15px; /* Reduced margin */
+    padding: 8px 20px; /* Reduced padding for smaller size */
+    font-size: 0.9em; /* Smaller font size */
+    font-weight: bold;
+    color: #000; /* Black text for high contrast */
+    background-color: #FFEB3B; /* Light Gold/Bright Yellow color */
+    border-radius: 50px; /* Highly rounded, pill shape for style */
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Lighter, subtle shadow */
+    /* Removed the pulse animation for a calmer, more stylish look */
+}
+
+
+
+/* Pulse animation for attention */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

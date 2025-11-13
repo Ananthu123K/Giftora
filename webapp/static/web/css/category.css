@@ -1,0 +1,107 @@
+/* =======================================================
+   SECTION E: CATEGORY CAROUSEL STYLING (Lovable & Excellent)
+   ======================================================= */
+
+.brand-carousel .swiper-wrapper {
+    align-items: stretch; /* Ensure all slides stretch to the max height */
+}
+
+/* Card Container Styling - Ensures Equal Height */
+.brand-carousel .swiper-slide.category-card-item {
+    height: auto;
+    display: flex; /* Helps ensure content inside is stretched */
+}
+
+.brand-carousel .swiper-slide .card {
+    min-height: 150px; /* Slightly taller for a more substantial look */
+    width: 100%; /* Important for equal width in swiper */
+    border: 1px solid transparent; /* Base border for hover contrast */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Card Hover Effect: Lifts slightly and gets a GOLD border */
+.brand-carousel .swiper-slide .card:hover {
+    transform: translateY(-4px); /* Slightly more lift */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2) !important;
+    border-color: #FFC43F !important; /* GOLD border on hover */
+}
+
+/* Internal Row and Content Alignment */
+.brand-carousel .swiper-slide .card .row.g-0 {
+    height: 100%;
+}
+.brand-carousel .swiper-slide .card .col-md-4,
+.brand-carousel .swiper-slide .card .col-md-8 {
+    display: flex;
+    align-items: center; /* Vertically centers image and text/button */
+}
+
+/* Image Styling */
+.brand-carousel .swiper-slide .card img {
+    max-height: 120px;
+    object-fit: contain;
+    width: auto !important; /* Prevent stretching */
+    margin: auto;
+}
+
+/* Text Styling */
+.brand-carousel .swiper-slide .card-body {
+    padding-left: 1rem !important;
+}
+.brand-carousel .swiper-slide .card-body p {
+    color: #212529 !important; /* Darkest text for perfect readability */
+    font-size: 1.05rem;
+    font-weight: 700; /* Extra bold category name */
+    margin-bottom: 0.5rem !important;
+}
+
+/* --- CATEGORY CARD BUTTON STYLING (ATTRACTIVE DEEP EMERALD) --- */
+.category-card-item .btn-category-action {
+    /* Subtle Gradient for depth */
+    background: linear-gradient(to bottom, #166060 0%, #1a7272 100%) !important;
+    border: none !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    padding: 7px 18px !important; /* Slightly more prominent padding */
+    border-radius: 50rem !important;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(22, 96, 96, 0.3);
+}
+
+.category-card-item .btn-category-action:hover {
+    /* Reverse the gradient and add a stronger shadow for 'pop' */
+    background: linear-gradient(to top, #166060 0%, #1a7272 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(22, 96, 96, 0.7); /* Stronger shadow */
+}
+
+/* Carousel Navigation Buttons (Matching Gold Outline Style) */
+.swiper-buttons .btn-outline-light {
+    font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 50%;
+    margin-left: 10px;
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* --- STANDARD OUTLINE BUTTONS (Gold Accent - Global Style Review) --- */
+.btn-outline-light {
+    border: 2px solid #FFC43F !important;
+    color: #333333 !important;
+    font-weight: 600 !important;
+    padding: 12px 25px !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-outline-light:hover {
+    background-color: #FFC43F !important;
+    color: #ffffff !important;
+    border-color: #FFC43F !important;
+    box-shadow: 0 4px 12px rgba(255, 196, 63, 0.5);
+    transform: translateY(-1px);
+}
