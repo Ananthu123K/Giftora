@@ -361,85 +361,72 @@
 
 
 
-      <!-- SINGLE PRODUCT SECTION -->
+<section class="cart-section py-5">
+  <div class="container">
+    <h3 class="text-center mb-5 fw-bold">Your Shopping Cart</h3>
 
-
-   <section id="product-detail" class="leaf-pattern-overlay py-5">
-    <div class="corner-pattern-overlay"></div>
-    <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-10">
-                <div class="row gy-4 align-items-stretch">
-
-                    <div class="col-md-6">
-                        <figure class="products-thumb h-100">
-                            <img src="{{ gift.Gift_image.url }}" class="img-fluid rounded shadow-lg h-100">
-                        </figure>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="product-entry p-3 rounded bg-light shadow-sm h-100">
-                            <h2 class="section-title divider text-uppercase text-primary">{{ gift.Category }}</h2>
-
-                            <form>
-                                <div class="products-content">
-                                    <h3 class="item-title mb-3 fw-bold">{{ gift.Gift_name }}</h3>
-                                    <p class="text-muted mb-3">{{ gift.Description }}</p>
-
-                                    <div class="item-price mb-3">
-                                        <strong>Price:</strong> ₹ <span id="productPrice">{{ gift.Price }}</span>
-                                    </div>
-
-                                    {% if request.session.Name %}
-                                     <div class="mb-3">
-                                      <label for="title" class="fw-bold">Title</label>
-                                      <input type="hidden" id="title" name="title" value="{{ gift.Gift_name }}"
-                                          class="form-control w-50" >
-                                     </div>
-                                      <div class="mb-3">
-                                        <label for="price" class="fw-bold">Price</label>
-                                        <input type="hidden" id="price" name="price" value="{{ gift.Price }}"
-                                            class="form-control w-50" required>
-                                      </div>
-                                       <div class="mb-3">
-                                          <label for="name" class="fw-bold">Username</label>
-                                          <input type="hidden" id="name" name="name" value="{{ request.session.Name }}"
-                                              class="form-control w-50" readonly>
-                                       </div>
-
-                                        <div class="mb-3">
-                                            <label for="quantity" class="fw-bold">Quantity:</label>
-                                            <input type="number" id="quantity" name="quantity" value="1" min="1"
-                                                class="form-control w-50" required>
-                                        </div>
-
-                                        <div class="mb-4">
-                                            <label for="totalPrice" class="fw-bold">Total Price:</label>
-                                            <input type="text" id="totalPrice" name="total_price"
-                                                class="form-control w-50 bg-white">
-                                        </div>
-
-                                        <div class="btn-wrap mt-4">
-                                            <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill shadow-sm">
-                                                Add to Cart <i class="icon icon-ns-arrow-right"></i>
-                                            </button>
-                                        </div>
-
-                                    {% else %}
-                                    <span class="login-message">
-                                        Please Login to continue shopping!
-                                    </span>
-                                    {% endif %}
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    </div>
-            </div>
-        </div>
+    <div class="table-responsive shadow-sm rounded-4">
+      <table class="table cart-table align-middle mb-0">
+        <thead class="cart-thead">
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Name</th>
+            <th scope="col" class="text-center">Price</th>
+            <th scope="col" class="text-center">Quantity</th>
+            <th scope="col" class="text-center">Total</th>
+            <th scope="col" class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img src="sample.jpg" alt="Product" class="cart-img"></td>
+            <td>Gift Box Combo</td>
+            <td class="text-center">$30.00</td>
+            <td class="text-center">
+              <input type="number" class="form-control quantity-input" value="1" min="1">
+            </td>
+            <td class="text-center">$30.00</td>
+            <td class="text-center">
+              <button class="btn btn-sm btn-outline-danger rounded-pill px-3">Remove</button>
+            </td>
+          </tr>
+          <tr>
+            <td><img src="sample2.jpg" alt="Product" class="cart-img"></td>
+            <td>Customized Mug</td>
+            <td class="text-center">$15.00</td>
+            <td class="text-center">
+              <input type="number" class="form-control quantity-input" value="2" min="1">
+            </td>
+            <td class="text-center">$30.00</td>
+            <td class="text-center">
+              <button class="btn btn-sm btn-outline-danger rounded-pill px-3">Remove</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
+    <div class="cart-summary text-end mt-5">
+      <h5>Subtotal: <span class="fw-bold">$60.00</span></h5>
+      <button class="checkout-btn mt-3"><a href="{% url 'checkout_page' %}">Continue to Checkout</a></button>
+    </div>
+  </div>
 </section>
-    <!-- /SINGLE PRODUCT SECTION -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--    footer-->
 
@@ -561,7 +548,6 @@
     <script src="{% static 'web/js/plugins.js' %}"></script>
     <script src="{% static 'web/js/script.js' %}"></script>
     <script src="{% static 'web/js/script1.js' %}"></script>
-
 
   </body>
 </html>

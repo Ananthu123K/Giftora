@@ -103,6 +103,21 @@ def save_contact(request):
         obj.save()
         return redirect(contact_page)
 
+def cart_page(request):
+    categories = CategoryDb.objects.all()
+    gifts = GiftDb.objects.all()
+    return render(request,"Cart.html",{"categories":categories,"gifts":gifts})
+
+
+def checkout_page(request):
+    gifts = GiftDb.objects.all()
+    categories = CategoryDb.objects.all()
+    return render(request,"Checkout.html",{"categories":categories,"gifts":gifts})
+
+
+
+
+
 
 
 

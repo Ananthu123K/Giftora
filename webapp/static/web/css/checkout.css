@@ -1,0 +1,77 @@
+/* ==========================
+   CHECKOUT PAGE STYLES
+   ========================== */
+.checkout-section {
+  background-color: #fdfdfd;
+  padding: 3rem 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ----- Headings ----- */
+.checkout-section h3 {
+  font-weight: 600;
+  color: #333;
+}
+
+.checkout-section h5 {
+  font-weight: 600;
+  color: #444;
+}
+
+/* ----- Form & Inputs ----- */
+.checkout-form label {
+  font-weight: 500;
+  color: #555;
+}
+
+.checkout-form .form-control {
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.checkout-form .form-control:focus {
+  border-color: #ffb84d;
+  box-shadow: 0 0 4px rgba(255, 184, 77, 0.4);
+}
+
+/* ----- Order Summary ----- */
+.order-summary .list-group-item {
+  border: none;
+  font-size: 15px;
+  background-color: transparent;
+}
+
+.order-summary {
+  border-top: 3px solid #ffb84d;
+}
+
+/* ----- Payment Options ----- */
+.payment-options .form-check {
+  margin-bottom: 10px;
+}
+
+.payment-options label {
+  color: #444;
+  cursor: pointer;
+}
+
+/* ----- Place Order Button ----- */
+.place-order-btn {
+  background-color: #ffb84d;
+  color: #222;
+  font-weight: 600;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 184, 77, 0.3);
+}
+
+.place-order-btn:hover {
+  background-color: #ff9900;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 153, 0, 0.3);
+}

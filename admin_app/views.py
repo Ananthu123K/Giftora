@@ -170,6 +170,3 @@ def delete_message(request,m_id):
     data=ContactDb.objects.filter(id=m_id)
     data.delete()
     return redirect(display_message)
-
-
-

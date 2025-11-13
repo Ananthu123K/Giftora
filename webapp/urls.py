@@ -15,5 +15,7 @@ urlpatterns=[
     path('user_login/',views.user_login,name="user_login"),
     path('user_logout/',views.user_logout,name="user_logout"),
     path('save_contact/',views.save_contact,name="save_contact"),
+    path('cart_page/',views.cart_page,name="cart_page"),
+    path('checkout_page/',views.checkout_page,name="checkout_page"),
 
 ]

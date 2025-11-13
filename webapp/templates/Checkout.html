@@ -361,85 +361,109 @@
 
 
 
-      <!-- SINGLE PRODUCT SECTION -->
+<section class="checkout-section">
+  <div class="container my-5">
+    <h3 class="text-center mb-5">Checkout</h3>
 
+    <div class="row g-4">
+      <!-- Billing & Shipping Form -->
+      <div class="col-lg-7">
+        <div class="checkout-form p-4 shadow-sm rounded-4 bg-white">
+          <h5 class="mb-4 fw-semibold text-secondary">Billing Details</h5>
 
-   <section id="product-detail" class="leaf-pattern-overlay py-5">
-    <div class="corner-pattern-overlay"></div>
-    <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-10">
-                <div class="row gy-4 align-items-stretch">
-
-                    <div class="col-md-6">
-                        <figure class="products-thumb h-100">
-                            <img src="{{ gift.Gift_image.url }}" class="img-fluid rounded shadow-lg h-100">
-                        </figure>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="product-entry p-3 rounded bg-light shadow-sm h-100">
-                            <h2 class="section-title divider text-uppercase text-primary">{{ gift.Category }}</h2>
-
-                            <form>
-                                <div class="products-content">
-                                    <h3 class="item-title mb-3 fw-bold">{{ gift.Gift_name }}</h3>
-                                    <p class="text-muted mb-3">{{ gift.Description }}</p>
-
-                                    <div class="item-price mb-3">
-                                        <strong>Price:</strong> ₹ <span id="productPrice">{{ gift.Price }}</span>
-                                    </div>
-
-                                    {% if request.session.Name %}
-                                     <div class="mb-3">
-                                      <label for="title" class="fw-bold">Title</label>
-                                      <input type="hidden" id="title" name="title" value="{{ gift.Gift_name }}"
-                                          class="form-control w-50" >
-                                     </div>
-                                      <div class="mb-3">
-                                        <label for="price" class="fw-bold">Price</label>
-                                        <input type="hidden" id="price" name="price" value="{{ gift.Price }}"
-                                            class="form-control w-50" required>
-                                      </div>
-                                       <div class="mb-3">
-                                          <label for="name" class="fw-bold">Username</label>
-                                          <input type="hidden" id="name" name="name" value="{{ request.session.Name }}"
-                                              class="form-control w-50" readonly>
-                                       </div>
-
-                                        <div class="mb-3">
-                                            <label for="quantity" class="fw-bold">Quantity:</label>
-                                            <input type="number" id="quantity" name="quantity" value="1" min="1"
-                                                class="form-control w-50" required>
-                                        </div>
-
-                                        <div class="mb-4">
-                                            <label for="totalPrice" class="fw-bold">Total Price:</label>
-                                            <input type="text" id="totalPrice" name="total_price"
-                                                class="form-control w-50 bg-white">
-                                        </div>
-
-                                        <div class="btn-wrap mt-4">
-                                            <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill shadow-sm">
-                                                Add to Cart <i class="icon icon-ns-arrow-right"></i>
-                                            </button>
-                                        </div>
-
-                                    {% else %}
-                                    <span class="login-message">
-                                        Please Login to continue shopping!
-                                    </span>
-                                    {% endif %}
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    </div>
+          <form>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" placeholder="Enter first name">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-control" placeholder="Enter last name">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" placeholder="you@example.com">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Phone</label>
+                <input type="tel" class="form-control" placeholder="+91 9876543210">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Address</label>
+                <input type="text" class="form-control" placeholder="House number and street name">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">City</label>
+                <input type="text" class="form-control" placeholder="City name">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Pincode</label>
+                <input type="text" class="form-control" placeholder="Enter Pincode">
+              </div>
             </div>
+          </form>
         </div>
+      </div>
+
+      <!-- Order Summary & Payment -->
+      <div class="col-lg-5">
+        <div class="order-summary p-4 shadow-sm rounded-4 bg-white">
+          <h5 class="mb-4 fw-semibold text-secondary">Order Summary</h5>
+          <ul class="list-group mb-4">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Gift Box Combo <span>$30.00</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Customized Mug <span>$15.00</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center fw-semibold border-0">
+              Subtotal <span>$45.00</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+              Shipping <span>Free</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center fw-bold border-top">
+              Total <span>$45.00</span>
+            </li>
+          </ul>
+
+          <h6 class="fw-semibold text-secondary mb-3">Payment Method</h6>
+          <div class="payment-options mb-4">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="paymentMethod" id="cod" checked>
+              <label class="form-check-label" for="cod">Cash on Delivery</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="paymentMethod" id="card">
+              <label class="form-check-label" for="card">Credit / Debit Card</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="paymentMethod" id="upi">
+              <label class="form-check-label" for="upi">UPI (Google Pay / PhonePe / Paytm)</label>
+            </div>
+          </div>
+
+          <button type="button" class="place-order-btn w-100">Place Order</button>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
-    <!-- /SINGLE PRODUCT SECTION -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--    footer-->
 
@@ -561,7 +585,6 @@
     <script src="{% static 'web/js/plugins.js' %}"></script>
     <script src="{% static 'web/js/script.js' %}"></script>
     <script src="{% static 'web/js/script1.js' %}"></script>
-
 
   </body>
 </html>
