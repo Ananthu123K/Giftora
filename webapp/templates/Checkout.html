@@ -256,13 +256,19 @@
               </li>
             </ul>
 
+         {% if request.session.Name %}
+
          <div class="cart text-end d-none d-lg-block dropdown">
+
+
             <a href="{% url 'cart_page' %}" class="cart-btn text-decoration-none">
               <i class="bi bi-cart-fill"></i>
               <span class="cart-text">Your Cart</span>
             </a>
-            <span class="cart-total">$1290.00</span>
+            <span class="cart-total">Items:{{ cart_total }}</span>
+
          </div>
+              {% endif %}
 
 
 
@@ -371,38 +377,64 @@
         <div class="checkout-form p-4 shadow-sm rounded-4 bg-white">
           <h5 class="mb-4 fw-semibold text-secondary">Billing Details</h5>
 
-          <form>
-            <div class="row g-3">
-              <div class="col-md-6">
-                <label class="form-label">First Name</label>
-                <input type="text" class="form-control" placeholder="Enter first name">
-              </div>
-              <div class="col-md-6">
-                <label class="form-label">Last Name</label>
-                <input type="text" class="form-control" placeholder="Enter last name">
-              </div>
-              <div class="col-12">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-control" placeholder="you@example.com">
-              </div>
-              <div class="col-12">
-                <label class="form-label">Phone</label>
-                <input type="tel" class="form-control" placeholder="+91 9876543210">
-              </div>
-              <div class="col-12">
-                <label class="form-label">Address</label>
-                <input type="text" class="form-control" placeholder="House number and street name">
-              </div>
-              <div class="col-md-6">
-                <label class="form-label">City</label>
-                <input type="text" class="form-control" placeholder="City name">
-              </div>
-              <div class="col-md-6">
-                <label class="form-label">Pincode</label>
-                <input type="text" class="form-control" placeholder="Enter Pincode">
-              </div>
-            </div>
-          </form>
+         <form method="post" action="{% url 'save_order' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row g-3">
+
+        <div class="col-md-6">
+            <label class="form-label">First Name</label>
+            <input type="text" name="first_name" class="form-control" required>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Last Name</label>
+            <input type="text" name="last_name" class="form-control" required>
+        </div>
+
+        <div class="col-12">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" required>
+        </div>
+
+        <div class="col-12">
+            <label class="form-label">Phone</label>
+            <input type="tel" name="mobile" class="form-control" required>
+        </div>
+
+        <div class="col-12">
+            <label class="form-label">Address</label>
+            <input type="text" name="address" class="form-control" required>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">State</label>
+            <input type="text" name="state" class="form-control" required>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">City</label>
+            <input type="text" name="city" class="form-control" required>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Pincode</label>
+            <input type="text" name="pincode" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Total Price</label>
+            <input type="text" name="totalprice" value="{{ total_amount }}" class="form-control" readonly>
+        </div>
+
+        <div class="col-12 mt-3">
+            <button type="submit" class="place-order-btn w-100 btn btn-primary">
+                Proceed to Payment
+            </button>
+        </div>
+
+    </div>
+</form>
+
+
         </div>
       </div>
 
@@ -411,40 +443,37 @@
         <div class="order-summary p-4 shadow-sm rounded-4 bg-white">
           <h5 class="mb-4 fw-semibold text-secondary">Order Summary</h5>
           <ul class="list-group mb-4">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Gift Box Combo <span>$30.00</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Customized Mug <span>$15.00</span>
+<!--            <li class="list-group-item d-flex justify-content-between align-items-center">-->
+<!--              Gift Box Combo <span>$30.00</span>-->
+<!--            </li>-->
+
+            <li class="list-group-item d-flex justify-content-between align-items-center fw-semibold border-0">
+              Subtotal <span>{{ sub_total }}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center fw-semibold border-0">
-              Subtotal <span>$45.00</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center border-0">
-              Shipping <span>Free</span>
+              Delivery Charge <span>{{delivery_charge}}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center fw-bold border-top">
-              Total <span>$45.00</span>
+              Total <span>{{ total_amount }}</span>
             </li>
           </ul>
 
-          <h6 class="fw-semibold text-secondary mb-3">Payment Method</h6>
-          <div class="payment-options mb-4">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="paymentMethod" id="cod" checked>
-              <label class="form-check-label" for="cod">Cash on Delivery</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="paymentMethod" id="card">
-              <label class="form-check-label" for="card">Credit / Debit Card</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="paymentMethod" id="upi">
-              <label class="form-check-label" for="upi">UPI (Google Pay / PhonePe / Paytm)</label>
-            </div>
-          </div>
+<!--          <h6 class="fw-semibold text-secondary mb-3">Payment Method</h6>-->
+<!--          <div class="payment-options mb-4">-->
+<!--            <div class="form-check">-->
+<!--              <input class="form-check-input" type="radio" name="paymentMethod" id="cod" checked>-->
+<!--              <label class="form-check-label" for="cod">Cash on Delivery</label>-->
+<!--            </div>-->
+<!--            <div class="form-check">-->
+<!--              <input class="form-check-input" type="radio" name="paymentMethod" id="card">-->
+<!--              <label class="form-check-label" for="card">Credit / Debit Card</label>-->
+<!--            </div>-->
+<!--            <div class="form-check">-->
+<!--              <input class="form-check-input" type="radio" name="paymentMethod" id="upi">-->
+<!--              <label class="form-check-label" for="upi">UPI (Google Pay / PhonePe / Paytm)</label>-->
+<!--            </div>-->
+<!--          </div>-->
 
-          <button type="button" class="place-order-btn w-100">Place Order</button>
         </div>
       </div>
     </div>

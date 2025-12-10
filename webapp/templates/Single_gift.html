@@ -204,34 +204,34 @@
 
             <ul class="d-flex justify-content-end list-unstyled m-0">
               {% if request.session.Name %}
-  <li>
-    <div class="user-auth-strip logged-in-strip">
-      <div class="d-flex align-items-center me-3">
-        <div class="user-auth-icon rounded-circle bg-light p-2 me-2">
-          <svg width="24" height="24" viewBox="0 0 24 24">
-            <use xlink:href="#user"></use>
-          </svg>
-        </div>
-        <span class="user-status-text">Welcome {{ request.session.Name }}</span>
-      </div>
+                  <li>
+                    <div class="user-auth-strip logged-in-strip">
+                      <div class="d-flex align-items-center me-3">
+                        <div class="user-auth-icon rounded-circle bg-light p-2 me-2">
+                          <svg width="24" height="24" viewBox="0 0 24 24">
+                            <use xlink:href="#user"></use>
+                          </svg>
+                        </div>
+                        <span class="user-status-text">Welcome {{ request.session.Name }}</span>
+                      </div>
 
-      <a href="{% url 'user_logout' %}" class="btn-logout-action text-decoration-none">
-        Logout
-      </a>
-    </div>
-  </li>
-{% else %}
-  <li>
-    <a href="{% url 'user_login' %}" class="user-auth-strip login-action-link">
-      <div class="user-auth-icon rounded-circle bg-light p-2 me-2">
-        <svg width="24" height="24" viewBox="0 0 24 24">
-          <use xlink:href="#user"></use>
-        </svg>
-      </div>
-      <span class="user-auth-text">Login</span>
-    </a>
-  </li>
-{% endif %}
+                      <a href="{% url 'user_logout' %}" class="btn-logout-action text-decoration-none">
+                        Logout
+                      </a>
+                    </div>
+                  </li>
+                {% else %}
+                  <li>
+                    <a href="{% url 'user_login' %}" class="user-auth-strip login-action-link">
+                      <div class="user-auth-icon rounded-circle bg-light p-2 me-2">
+                        <svg width="24" height="24" viewBox="0 0 24 24">
+                          <use xlink:href="#user"></use>
+                        </svg>
+                      </div>
+                      <span class="user-auth-text">Login</span>
+                    </a>
+                  </li>
+                {% endif %}
 
 <!--             <li>-->
 <!--                <a href="#" class="d-flex align-items-center text-decoration-none text-dark">-->
@@ -255,14 +255,19 @@
                 </a>
               </li>
             </ul>
+ {% if request.session.Name %}
 
          <div class="cart text-end d-none d-lg-block dropdown">
+
+
             <a href="{% url 'cart_page' %}" class="cart-btn text-decoration-none">
               <i class="bi bi-cart-fill"></i>
               <span class="cart-text">Your Cart</span>
             </a>
-            <span class="cart-total">$1290.00</span>
+            <span class="cart-total">Items:{{ cart_total }}</span>
+
          </div>
+              {% endif %}
 
 
 
@@ -311,7 +316,7 @@
 
             <ul class="navbar-nav justify-content-end menu-list list-unstyled d-flex gap-md-3 mb-0">
               <li class="nav-item active">
-                <a href="{% url 'home_page' %}" class="nav-link active">Home</a>
+                <a href="{% url 'home_page' %}" class="nav-link ">Home</a>
               </li>
               <li class="nav-item dropdown">
                 <a href="{% url 'about_page' %}" class="nav-link">About</a>
@@ -379,10 +384,14 @@
 
                     <div class="col-md-6">
                         <div class="product-entry p-3 rounded bg-light shadow-sm h-100">
+
                             <h2 class="section-title divider text-uppercase text-primary">{{ gift.Category }}</h2>
 
-                            <form>
+                            <form method="POST" action="{% url 'save_to_cart' %}" enctype="multipart/form-data">
+                                {% csrf_token %}
+
                                 <div class="products-content">
+
                                     <h3 class="item-title mb-3 fw-bold">{{ gift.Gift_name }}</h3>
                                     <p class="text-muted mb-3">{{ gift.Description }}</p>
 
@@ -391,34 +400,41 @@
                                     </div>
 
                                     {% if request.session.Name %}
-                                     <div class="mb-3">
-                                      <label for="title" class="fw-bold">Title</label>
-                                      <input type="hidden" id="title" name="title" value="{{ gift.Gift_name }}"
-                                          class="form-control w-50" >
-                                     </div>
-                                      <div class="mb-3">
-                                        <label for="price" class="fw-bold">Price</label>
-                                        <input type="hidden" id="price" name="price" value="{{ gift.Price }}"
-                                            class="form-control w-50" required>
-                                      </div>
-                                       <div class="mb-3">
-                                          <label for="name" class="fw-bold">Username</label>
-                                          <input type="hidden" id="name" name="name" value="{{ request.session.Name }}"
-                                              class="form-control w-50" readonly>
-                                       </div>
 
+                                        <!-- Username -->
+                                        <div class="mb-3">
+<!--                                            <label for="name" class="fw-bold">Username:</label>-->
+                                            <input type="hidden" id="name" name="username" value="{{ request.session.Name }}"
+                                                class="form-control w-50" readonly>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="gift_name" class="fw-bold">Title:</label>
+                                            <input type="text" id="gift_name" name="gift_name" value="{{ gift.Gift_name }}"
+                                                class="form-control w-50" readonly>
+                                        </div>
+
+                                        <!-- Quantity -->
                                         <div class="mb-3">
                                             <label for="quantity" class="fw-bold">Quantity:</label>
                                             <input type="number" id="quantity" name="quantity" value="1" min="1"
                                                 class="form-control w-50" required>
                                         </div>
 
-                                        <div class="mb-4">
-                                            <label for="totalPrice" class="fw-bold">Total Price:</label>
-                                            <input type="text" id="totalPrice" name="total_price"
-                                                class="form-control w-50 bg-white">
+                                        <!-- Price -->
+                                        <div class="mb-3">
+                                            <label for="price" class="fw-bold">Price</label>
+                                            <input type="text" id="price" name="price" value="{{ gift.Price }}"
+                                                class="form-control w-50" readonly>
                                         </div>
 
+                                        <!-- Total Price -->
+                                        <div class="mb-4">
+                                            <label for="totalprice" class="fw-bold">Total Price:</label>
+                                            <input type="text" id="totalprice" name="totalprice"
+                                                class="form-control w-50 bg-white" value="{{ gift.Price }}" readonly>
+                                        </div>
+
+                                        <!-- Submit Button -->
                                         <div class="btn-wrap mt-4">
                                             <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill shadow-sm">
                                                 Add to Cart <i class="icon icon-ns-arrow-right"></i>
@@ -426,10 +442,11 @@
                                         </div>
 
                                     {% else %}
-                                    <span class="login-message">
-                                        Please Login to continue shopping!
-                                    </span>
+                                        <span class="login-message text-danger">
+                                            Please login to continue shopping!
+                                        </span>
                                     {% endif %}
+
                                 </div>
                             </form>
                         </div>
@@ -561,6 +578,16 @@
     <script src="{% static 'web/js/plugins.js' %}"></script>
     <script src="{% static 'web/js/script.js' %}"></script>
     <script src="{% static 'web/js/script1.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+            $("#quantity").change(function(){
+                x=document.getElementById("quantity").value;
+                y=document.getElementById("price").value;
+                result=x*y;
+                document.getElementById("totalprice").value=result;
+            })
+        })
+   </script>
 
 
   </body>

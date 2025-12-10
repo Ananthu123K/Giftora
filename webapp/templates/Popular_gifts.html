@@ -256,13 +256,19 @@
               </li>
             </ul>
 
+          {% if request.session.Name %}
+
          <div class="cart text-end d-none d-lg-block dropdown">
+
+
             <a href="{% url 'cart_page' %}" class="cart-btn text-decoration-none">
               <i class="bi bi-cart-fill"></i>
               <span class="cart-text">Your Cart</span>
             </a>
-            <span class="cart-total">$1290.00</span>
+            <span class="cart-total">Items:{{ cart_total }}</span>
+
          </div>
+              {% endif %}
 
 
 

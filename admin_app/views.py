@@ -6,6 +6,7 @@ from django.core.files.storage import FileSystemStorage
 from django.utils.datastructures import MultiValueDictKeyError
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login
+from django.contrib import messages
 
 # Create your views here.
 def index_page(request):
@@ -32,6 +33,7 @@ def save_category(request):
 
         )
         obj.save()
+        messages.success(request, "category added Successfully")
         return redirect(add_category)
 def edit_category(request,category_id):
     category=CategoryDb.objects.get(id=category_id)
@@ -56,11 +58,13 @@ def update_category(request,cat_id):
             Cover_Image=file
 
         )
+        messages.success(request, "category updated successfully")
         return redirect(display_category)
 
 def delete_category(request, cat_id):
     category = CategoryDb.objects.filter(id=cat_id)
     category.delete()
+    messages.success(request,"category deleted successfully")
     return redirect(display_category)
 
 #Gift views
@@ -94,6 +98,7 @@ def save_gift(request):
 
         )
         obj.save()
+        messages.success(request,"Gift saved successfully")
         return redirect(add_gift)
 
 def edit_gift(request,gift_id):
@@ -127,12 +132,14 @@ def update_gift(request, gift_id):
             Description=description,
             Gift_image=file
         )
+        messages.success(request, "Gift updated successfully")
 
         return redirect(display_gift)
 
 def delete_gift(request,g_id):
     data=GiftDb.objects.filter(id=g_id)
     data.delete()
+    messages.success(request, "Gift deleted successfully")
     return redirect(display_gift)
 
 def admin_login_page(request):
@@ -170,3 +177,4 @@ def delete_message(request,m_id):
     data=ContactDb.objects.filter(id=m_id)
     data.delete()
     return redirect(display_message)
+

@@ -21,7 +21,7 @@
         }
 </style>
     <div class="login-card-container">
-        <form id="signupForm" class="login-card" method="post" action="{% url 'user_signup' %}">
+        <form id="signupForm" class="login-card" method="post" name="signup_form" action="{% url 'user_signup' %}" onsubmit="return final_validation()">
             {% csrf_token %}
             <div class="login-header">
                 <h2>Create Your GiftShop Account! 🎁</h2>
@@ -101,5 +101,65 @@
     </div>
 
     <script src="{% static 'UserLogin/js/script.js' %}"></script>
+    <script>
+    function password_validation(){
+        p1 = document.signup_form.password.value;
+        p2 = document.signup_form.confirm_password.value;
+
+        if(p1 == ""){
+            alert("password can't be blank");
+            return false;
+        }
+        else if(p2 == ""){
+            alert("confirm password can't be blank");
+            return false;
+        }
+        else if(p1.length < 6){
+            alert("password must contain atleast 6 characters");
+            return false;
+        }
+        else if(p1 == p2){
+            return true;
+        }
+        else{
+            alert("password doesn't match");
+            return false;
+        }
+    }
+
+    function validation(){
+        x = document.signup_form.name.value;
+        y = document.signup_form.email.value;
+        z = document.signup_form.phone.value;
+
+        if(x == "" || x == null){
+            alert("Name can't be null or blank");
+            return false;
+        }
+        else if(y == "" || y == null){
+            alert("Email can't be null or blank");
+            return false;
+        }
+        else if(z == "" || z == null){
+            alert("Number can't be null or blank");
+            return false;
+        }
+        else if(z.length != 10){
+            alert("Invalid mobile number");
+            return false;
+        }
+        return true;
+    }
+
+    function final_validation(){
+        if(validation() && password_validation()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+</script>
+
 </body>
 </html>

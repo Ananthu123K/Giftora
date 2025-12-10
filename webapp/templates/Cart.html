@@ -256,14 +256,19 @@
               </li>
             </ul>
 
+          {% if request.session.Name %}
+
          <div class="cart text-end d-none d-lg-block dropdown">
+
+
             <a href="{% url 'cart_page' %}" class="cart-btn text-decoration-none">
               <i class="bi bi-cart-fill"></i>
               <span class="cart-text">Your Cart</span>
             </a>
-            <span class="cart-total">$1290.00</span>
-         </div>
+            <span class="cart-total">Items:{{ cart_total }}</span>
 
+         </div>
+              {% endif %}
 
 
           </div>
@@ -378,39 +383,77 @@
           </tr>
         </thead>
         <tbody>
+        {% for i in gifts %}
           <tr>
-            <td><img src="sample.jpg" alt="Product" class="cart-img"></td>
-            <td>Gift Box Combo</td>
-            <td class="text-center">$30.00</td>
+            <td>
+            {% if i.Gift_Image %}
+                <img src="{{ i.Gift_Image.url }}" alt="Gift Image" style="width:80px; height:80px; object-fit:cover; border-radius:8px;">
+            {% else %}
+                <span class="text-muted">No Image</span>
+            {% endif %}
+          </td>
+
+            <td>{{ i.Giftname }}</td>
+            <td class="text-center">{{ i.Price }}</td>
+
             <td class="text-center">
               <input type="number" class="form-control quantity-input" value="1" min="1">
             </td>
-            <td class="text-center">$30.00</td>
+            <td class="text-center">{{ i.TotalPrice }}</td>
             <td class="text-center">
-              <button class="btn btn-sm btn-outline-danger rounded-pill px-3">Remove</button>
+             <a href="{% url 'delete_item' i.id %}"
+             onclick="return confirm('Remove this item from cart?');"><button class="btn btn-sm btn-outline-danger rounded-pill px-3">Remove</button></a>
             </td>
           </tr>
-          <tr>
-            <td><img src="sample2.jpg" alt="Product" class="cart-img"></td>
-            <td>Customized Mug</td>
-            <td class="text-center">$15.00</td>
-            <td class="text-center">
-              <input type="number" class="form-control quantity-input" value="2" min="1">
-            </td>
-            <td class="text-center">$30.00</td>
-            <td class="text-center">
-              <button class="btn btn-sm btn-outline-danger rounded-pill px-3">Remove</button>
-            </td>
-          </tr>
+     {% endfor %}
         </tbody>
       </table>
     </div>
 
-    <div class="cart-summary text-end mt-5">
-      <h5>Subtotal: <span class="fw-bold">$60.00</span></h5>
-      <button class="checkout-btn mt-3"><a href="{% url 'checkout_page' %}">Continue to Checkout</a></button>
-    </div>
+<!-- Order summary-->
+          <div class="col-lg-5" style="margin-top:50px; margin-left:auto;">
+
+        <div class="order-summary p-4 shadow-sm rounded-4 bg-white">
+          <h5 class="mb-4 fw-semibold text-secondary">Order Summary</h5>
+          <ul class="list-group mb-4">
+<!--            <li class="list-group-item d-flex justify-content-between align-items-center">-->
+<!--              Gift Box Combo <span>$30.00</span>-->
+<!--            </li>-->
+
+            <li class="list-group-item d-flex justify-content-between align-items-center fw-semibold border-0">
+              Subtotal <span>{{ sub_total }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center fw-semibold border-0">
+              Delivery Charge <span>{{delivery_charge}}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center fw-bold border-top">
+              Total <span>{{ total_amount }}</span>
+            </li>
+          </ul>
+
+<!--          <h6 class="fw-semibold text-secondary mb-3">Payment Method</h6>-->
+<!--          <div class="payment-options mb-4">-->
+<!--            <div class="form-check">-->
+<!--              <input class="form-check-input" type="radio" name="paymentMethod" id="cod" checked>-->
+<!--              <label class="form-check-label" for="cod">Cash on Delivery</label>-->
+<!--            </div>-->
+<!--            <div class="form-check">-->
+<!--              <input class="form-check-input" type="radio" name="paymentMethod" id="card">-->
+<!--              <label class="form-check-label" for="card">Credit / Debit Card</label>-->
+<!--            </div>-->
+<!--            <div class="form-check">-->
+<!--              <input class="form-check-input" type="radio" name="paymentMethod" id="upi">-->
+<!--              <label class="form-check-label" for="upi">UPI (Google Pay / PhonePe / Paytm)</label>-->
+<!--            </div>-->
+<!--          </div>-->
+
+         <a href="{% url 'checkout_page' %}"><button type="button" class="place-order-btn w-100">Continue to Checkout</button></a>
+        </div>
+      </div>
+
+
   </div>
+
 </section>
 
 

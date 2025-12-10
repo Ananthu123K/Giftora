@@ -255,14 +255,19 @@
                 </a>
               </li>
             </ul>
+              {% if request.session.Name %}
 
          <div class="cart text-end d-none d-lg-block dropdown">
+
+
             <a href="{% url 'cart_page' %}" class="cart-btn text-decoration-none">
               <i class="bi bi-cart-fill"></i>
               <span class="cart-text">Your Cart</span>
             </a>
-            <span class="cart-total">$1290.00</span>
+            <span class="cart-total">Items:{{ cart_total }}</span>
+
          </div>
+              {% endif %}
 
 
 
@@ -528,7 +533,7 @@
                           <!-- ✅ Added See Books button -->
                       <a href="{% url 'filtered_gifts' gift_category=i.Category_name %}"
                          class="btn btn-sm btn-warning rounded-pill px-3 py-1">
-                        See Books
+                        See Gifts
                       </a>
 <!--                          <h5 class="card-title">Honey best nectar you wish to get</h5>-->
                         </div>

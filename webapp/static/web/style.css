@@ -1574,7 +1574,36 @@ h1,h2,h3,h4,h5,h6 {
 
 
 
+/*payment button style*/
+       .banner {
+    width: 100%;
+    height: 300px;
+    background-image: url("{% static 'web/images/payment_banner.jpg' %}");
+    background-size: cover;
+    background-position: center;
+}
 
+.btn-container {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 40px; /* spacing below the button section */
+}
+
+.payment-btn {
+    padding: 14px 30px;
+    font-size: 18px;
+    background-color: #ff3333;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 50px;
+}
+
+.payment-btn:hover {
+    background-color: #cc0000;
+}
 
 
 
